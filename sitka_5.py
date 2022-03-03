@@ -30,6 +30,7 @@ for row in csv_file_dv:
         high = int(row[header_row_dict['TMAX']])
         low = int(row[header_row_dict['TMIN']])
         current_date = datetime.strptime(row[header_row_dict['DATE']], '%Y-%m-%d')
+        title_dv = row[header_row_dict['NAME']]
     
     except ValueError:  # doesn’t break the program, it just skips a row
         print(f"Missing Data for {current_date}") # to print out if we get a value error
@@ -49,6 +50,7 @@ for row in csv_file_s:
         high = int(row[header_row_dict['TMAX']])
         low = int(row[header_row_dict['TMIN']])
         current_date = datetime.strptime(row[header_row_dict['DATE']], '%Y-%m-%d')
+        title_s = row[header_row_dict['NAME']]
     
     except ValueError:  # doesn’t break the program, it just skips a row
         print(f"Missing Data for {current_date}") # to print out if we get a value error
@@ -61,26 +63,26 @@ for row in csv_file_s:
 import matplotlib.pyplot as plt
 fig = plt.figure() 
 
-plt.title("Daily low and high temperature, 2018", fontsize=16)
+#plt.title("Daily low and high temperature, 2018", fontsize=16)
 plt.xlabel("Year 2018")
 plt.ylabel("Temperatures (F)", fontsize=16)
 plt.tick_params(axis="both", which="major", labelsize=16) # major tick
 
-fig.autofmt_xdate()  
-
-plt.subplot(3,1,1)
+plt.subplot(2,1,1)
 plt.plot(dates_dv,highs_dv, c='red')
 plt.plot(dates_dv,lows_dv, c='blue')
 plt.fill_between(dates_dv, highs_dv, lows_dv, facecolor = 'blue', alpha = 0.1)
-plt.title("DV")
+plt.title(title_dv)
 
-plt.subplot(3,1,2) # second subplot
+plt.subplot(2,1,2) # second subplot
 plt.plot(dates_s,highs_s, c='red')
 plt.plot(dates_s,lows_s, c='blue')
 plt.fill_between(dates_s, highs_s, lows_s, facecolor = 'blue', alpha = 0.1)
-plt.title("S")
+plt.title(title_s)
 
 plt.suptitle("Temperature Comparison between SITKA AIRPORT, AK US, AND DEATH VALLEY, CA US,2018")
+
+fig.autofmt_xdate()  
 plt.show()
 
 
