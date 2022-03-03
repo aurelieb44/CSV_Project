@@ -32,7 +32,7 @@ for row in csv_file:
 #print(test_date)
 
 import matplotlib.pyplot as plt
-fig = plt.figure()
+fig = plt.figure() 
 
 # create a plot
 plt.plot(dates,highs,c='red')
@@ -46,7 +46,7 @@ plt.xlabel("Year 2018")
 plt.ylabel("Temperatures (F)", fontsize=16)
 plt.tick_params(axis="both", which="major", labelsize=16) # major tick
 
-fig.autofmt_xdate()
+fig.autofmt_xdate()  
 
 # plt.show() # so it only shows the second graph/subplot
 
