@@ -69,16 +69,16 @@ plt.ylabel("Temperatures (F)", fontsize=16)
 plt.tick_params(axis="both", which="major", labelsize=16) # major tick
 
 plt.subplot(2,1,1)
-plt.plot(dates_dv,highs_dv, c='red')
-plt.plot(dates_dv,lows_dv, c='blue')
-plt.fill_between(dates_dv, highs_dv, lows_dv, facecolor = 'blue', alpha = 0.1)
-plt.title(title_dv)
-
-plt.subplot(2,1,2) # second subplot
 plt.plot(dates_s,highs_s, c='red')
 plt.plot(dates_s,lows_s, c='blue')
 plt.fill_between(dates_s, highs_s, lows_s, facecolor = 'blue', alpha = 0.1)
 plt.title(title_s)
+
+plt.subplot(2,1,2) # second subplot
+plt.plot(dates_dv,highs_dv, c='red')
+plt.plot(dates_dv,lows_dv, c='blue')
+plt.fill_between(dates_dv, highs_dv, lows_dv, facecolor = 'blue', alpha = 0.1)
+plt.title(title_dv)
 
 plt.suptitle("Temperature Comparison between SITKA AIRPORT, AK US, AND DEATH VALLEY, CA US,2018")
 
