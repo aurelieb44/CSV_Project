@@ -41,10 +41,10 @@ plt.plot(dates,lows, c='blue')
 plt.fill_between(dates, highs, lows, facecolor = 'blue', alpha = 0.1)
 # give x axis location # give two y axis locations # alpha closer to 0 is more transparent
 
-plt.title("Daily low and high temperature, 2018", fontsize=16)
-plt.xlabel("Year 2018")
-plt.ylabel("Temperatures (F)", fontsize=16)
-plt.tick_params(axis="both", which="major", labelsize=16) # major tick
+#plt.title("Daily low and high temperature, 2018", fontsize=16)
+#plt.xlabel("Year 2018")
+#plt.ylabel("Temperatures (F)", fontsize=16)
+#plt.tick_params(axis="both", which="major", labelsize=16) # major tick
 
 fig.autofmt_xdate()  
 
@@ -59,6 +59,8 @@ plt.title("Highs")
 plt.subplot(2,1,2) # second subplot
 plt.plot(dates,lows, c='blue')
 plt.title("Lows")
+plt.xlabel("Year 2018")
+plt.ylabel("Temperatures (F)", fontsize=16)
 
 plt.suptitle("Highs and Lows of Sitka, Alaska 2018")
 plt.show()
