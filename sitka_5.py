@@ -10,35 +10,17 @@ open_file = open('death_valley_2018_simple.csv', 'r')
 csv_file_dv = csv.reader(open_file, delimiter = ',')
 open_file = open('sitka_weather_2018_simple.csv', 'r')
 csv_file_s = csv.reader(open_file, delimiter = ',')
-header_row = next(csv_file_dv)
-header_row = next(csv_file_s)
+header_row_dv = next(csv_file_dv)
+header_row_s = next(csv_file_s)
 
-header_row_dict = {}
-for index, column_header in enumerate(header_row): # can use enumerate on any kind of list object
-    print(index, column_header)
-    header_row_dict[column_header] = index
-print(header_row_dict)
-print(header_row_dict['TMAX'])
+# SITKA
 
-highs_dv = []
-lows_dv = []
-dates_dv = []
-
-for row in csv_file_dv: 
-
-    try:
-        high = int(row[header_row_dict['TMAX']])
-        low = int(row[header_row_dict['TMIN']])
-        current_date = datetime.strptime(row[header_row_dict['DATE']], '%Y-%m-%d')
-        title_dv = row[header_row_dict['NAME']]
-    
-    except ValueError:  # doesn’t break the program, it just skips a row
-        print(f"Missing Data for {current_date}") # to print out if we get a value error
-
-    else:
-        highs_dv.append(high)
-        lows_dv.append(low)
-        dates_dv.append(current_date)
+header_row_s_dict = {}
+for index_s, column_header in enumerate(header_row_s): # can use enumerate on any kind of list object
+    print(index_s, column_header)
+    header_row_s_dict[column_header] = index_s
+print(header_row_s)
+#print(header_row_s_dict['TMAX'])
 
 highs_s = []
 lows_s = []
@@ -47,10 +29,10 @@ dates_s = []
 for row in csv_file_s: 
 
     try:
-        high = int(row[header_row_dict['TMAX']])
-        low = int(row[header_row_dict['TMIN']])
-        current_date = datetime.strptime(row[header_row_dict['DATE']], '%Y-%m-%d')
-        title_s = row[header_row_dict['NAME']]
+        high = int(row[header_row_s_dict['TMAX']])
+        low = int(row[header_row_s_dict['TMIN']])
+        current_date = datetime.strptime(row[header_row_s_dict['DATE']], '%Y-%m-%d')
+        title_s = row[header_row_s_dict['NAME']]
     
     except ValueError:  # doesn’t break the program, it just skips a row
         print(f"Missing Data for {current_date}") # to print out if we get a value error
@@ -60,12 +42,41 @@ for row in csv_file_s:
         lows_s.append(low)
         dates_s.append(current_date)
 
+
+# DEATH VALLEY
+
+header_row_dv_dict = {}
+for index_dv, column_header in enumerate(header_row_dv): # can use enumerate on any kind of list object
+    print(index_dv, column_header)
+    header_row_dv_dict[column_header] = index_dv
+print(header_row_dv)
+#print(header_row_dv_dict['TMAX'])
+
+highs_dv = []
+lows_dv = []
+dates_dv = []
+
+for row in csv_file_dv: 
+
+    try:
+        high = int(row[header_row_dv_dict['TMAX']])
+        low = int(row[header_row_dv_dict['TMIN']])
+        current_date = datetime.strptime(row[header_row_dv_dict['DATE']], '%Y-%m-%d')
+        title_dv = row[header_row_dv_dict['NAME']]
+    
+    except ValueError:  # doesn’t break the program, it just skips a row
+        print(f"Missing Data for {current_date}") # to print out if we get a value error
+
+    else:
+        highs_dv.append(high)
+        lows_dv.append(low)
+        dates_dv.append(current_date)
+
+# GRAPH
+
 import matplotlib.pyplot as plt
 fig = plt.figure() 
 
-#plt.title("Daily low and high temperature, 2018", fontsize=16)
-plt.xlabel("Year 2018")
-plt.ylabel("Temperatures (F)", fontsize=16)
 plt.tick_params(axis="both", which="major", labelsize=16) # major tick
 
 plt.subplot(2,1,1)
