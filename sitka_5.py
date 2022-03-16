@@ -20,7 +20,6 @@ for index_s, column_header in enumerate(header_row_s): # can use enumerate on an
     print(index_s, column_header)
     header_row_s_dict[column_header] = index_s
 print(header_row_s)
-#print(header_row_s_dict['TMAX'])
 
 highs_s = []
 lows_s = []
@@ -42,7 +41,6 @@ for row in csv_file_s:
         lows_s.append(low)
         dates_s.append(current_date)
 
-
 # DEATH VALLEY
 
 header_row_dv_dict = {}
@@ -50,7 +48,6 @@ for index_dv, column_header in enumerate(header_row_dv): # can use enumerate on 
     print(index_dv, column_header)
     header_row_dv_dict[column_header] = index_dv
 print(header_row_dv)
-#print(header_row_dv_dict['TMAX'])
 
 highs_dv = []
 lows_dv = []
